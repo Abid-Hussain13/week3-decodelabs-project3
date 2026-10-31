@@ -1,0 +1,25 @@
+{
+  "name": "quire",
+  "version": "1.0.0",
+  "description": "Quire — a writing archive blog with PostgreSQL (DecodeLabs Full Stack Project 3)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "db:schema": "psql \"$DATABASE_URL\" -f schema.sql",
+    "db:seed": "node seed.js"
+  },
+  "keywords": [
+    "blog",
+    "postgres",
+    "crud",
+    "express",
+    "decodelabs"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^4.21.2",
+    "pg": "^8.16.3"
+  }
+}

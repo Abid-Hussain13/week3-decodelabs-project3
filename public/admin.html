@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Desk — Quire</title>
+  <meta name="description" content="Editorial desk — manage posts in the Quire archive." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body data-page="admin">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        Quire
+        <span class="brand-sub">Desk</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/" data-nav="home">Index</a>
+        <a href="/about.html" data-nav="about">About</a>
+        <a href="/admin.html" class="nav-cta" data-nav="admin">Write</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="admin-bar">
+      <div>
+        <p class="eyebrow">Editorial desk</p>
+        <h1>All entries</h1>
+      </div>
+      <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
+        <div class="stats" id="stats" aria-label="Post counts">
+          <div class="stat"><div class="stat-val" id="stat-total">—</div><div class="stat-lab">Total</div></div>
+          <div class="stat"><div class="stat-val" id="stat-pub">—</div><div class="stat-lab">Published</div></div>
+          <div class="stat"><div class="stat-val" id="stat-draft">—</div><div class="stat-lab">Drafts</div></div>
+        </div>
+        <a class="btn" href="/editor.html">New entry</a>
+      </div>
+    </div>
+
+    <div class="table-scroll">
+      <table class="admin-table" id="posts-table">
+        <thead>
+          <tr>
+            <th style="width:4.5rem">ID</th>
+            <th>Title</th>
+            <th style="width:7rem">Section</th>
+            <th style="width:7rem">Status</th>
+            <th style="width:7rem">Updated</th>
+            <th style="width:11rem; text-align:right">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="posts-body">
+          <tr><td colspan="6"><p class="loading">Loading entries…</p></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="empty-state" hidden class="empty" style="margin-top:1rem">
+      No entries yet. Create the first one.
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Quire · Full Stack Project 3 · PostgreSQL</span>
+      <span><a href="/">Back to index</a></span>
+    </div>
+  </footer>
+
+  <script src="/js/shared.js"></script>
+  <script src="/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quire — field notes on software &amp; systems</title>
+  <meta name="description" content="Quire is a small writing archive on databases, craft, and the systems around them." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body data-page="home">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        Quire
+        <span class="brand-sub">Archive</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/" data-nav="home">Index</a>
+        <a href="/about.html" data-nav="about">About</a>
+        <a href="/admin.html" class="nav-cta" data-nav="admin">Write</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="masthead">
+      <div class="wrap masthead-grid">
+        <div>
+          <p class="eyebrow">Est. 2026 · DecodeLabs</p>
+          <h1>Field notes on <em>software</em>, systems &amp; craft.</h1>
+        </div>
+        <div>
+          <p class="masthead-lede">A working archive — written slowly, stored permanently, published when ready.</p>
+          <p class="masthead-meta" id="masthead-meta">Loading index…</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="wrap">
+      <div id="featured-slot" aria-live="polite">
+        <p class="loading">Loading featured entry…</p>
+      </div>
+
+      <section class="archive" aria-labelledby="archive-heading">
+        <div class="archive-head">
+          <h2 id="archive-heading">The Index</h2>
+          <span class="eyebrow" id="archive-count"></span>
+        </div>
+        <div class="index-cols" aria-hidden="true">
+          <span>Entry</span>
+          <span>Title</span>
+          <span>Section</span>
+          <span>Filed</span>
+        </div>
+        <div id="index-list">
+          <p class="loading">Loading entries…</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Quire · Full Stack Project 3 · PostgreSQL</span>
+      <span><a href="/admin.html">Editorial desk</a> · <a href="/about.html">About</a></span>
+    </div>
+  </footer>
+
+  <script src="/js/shared.js"></script>
+  <script src="/js/home.js"></script>
+</body>
+</html>

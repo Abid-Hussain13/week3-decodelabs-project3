@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Quire</title>
+  <meta name="description" content="What Quire is, how it is built, and who it is for." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body data-page="about">
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="/">
+        <span class="brand-mark" aria-hidden="true"></span>
+        Quire
+        <span class="brand-sub">Archive</span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/" data-nav="home">Index</a>
+        <a href="/about.html" data-nav="about">About</a>
+        <a href="/admin.html" class="nav-cta" data-nav="admin">Write</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <header class="page-intro">
+        <p class="eyebrow">Colophon</p>
+        <h1>A small archive with a permanent address.</h1>
+        <p>Quire is a writing site built as DecodeLabs Full Stack Project&nbsp;3 — database integration done properly, without the ceremony.</p>
+      </header>
+
+      <section class="about-grid" aria-label="At a glance">
+        <div class="about-cell">
+          <span class="eyebrow">Storage</span>
+          <h2>PostgreSQL, not a notepad</h2>
+          <p>Every entry lives in a real relational database — categories, drafts, timestamps, and all. Nothing is held in a temporary variable.</p>
+        </div>
+        <div class="about-cell">
+          <span class="eyebrow">Operations</span>
+          <h2>Full CRUD</h2>
+          <p>Create, read, update, and delete posts through a JSON API with validation, parameterised queries, and sensible errors.</p>
+        </div>
+        <div class="about-cell">
+          <span class="eyebrow">Interface</span>
+          <h2>Five plain pages</h2>
+          <p>Index, entry, about, desk, and editor. Server-rendered feel, no framework, no build step — just HTML, CSS, and fetch.</p>
+        </div>
+      </section>
+
+      <div class="about-body prose">
+        <h2>Why it looks like this</h2>
+        <p>Most blogs are a grid of identical cards. Quire is built as an <strong>accession index</strong>: entries are numbered, filed under a section, and dated — the way a working archive keeps track of what it holds. The blue rule that appears on hover is the only flourish; everything else is typography and spacing.</p>
+        <p>Articles are set in Newsreader for long-form reading, Archivo for structure, and IBM Plex Mono for the machine-readable parts — dates, entry numbers, status badges.</p>
+
+        <h2>The schema</h2>
+        <p>Two tables. <strong>categories</strong> and <strong>posts</strong>, related one-to-many with a foreign key. Posts carry a status (<code>draft</code> or <code>published</code>), a computed reading time, and both <code>created_at</code> and <code>published_at</code> so the index can sort by what readers actually see.</p>
+
+        <h2>Running it locally</h2>
+        <p>Copy <code>.env.example</code> to <code>.env</code>, point <code>DATABASE_URL</code> at your Postgres instance, then run the schema and seed scripts before starting the server. The full sequence is in the README.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>Quire · Full Stack Project 3 · PostgreSQL</span>
+      <span><a href="/">Back to index</a> · <a href="/admin.html">Editorial desk</a></span>
+    </div>
+  </footer>
+
+  <script src="/js/shared.js"></script>
+</body>
+</html>
