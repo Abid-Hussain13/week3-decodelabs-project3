@@ -25,11 +25,6 @@ function formatDate(iso) {
   });
 }
 
-function entryNo(index, total) {
-  const n = total - index;
-  return `№ ${String(n).padStart(3, "0")}`;
-}
-
 function escapeHtml(str) {
   return String(str)
     .replace(/&/g, "&amp;")

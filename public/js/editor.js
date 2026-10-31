@@ -6,10 +6,9 @@ const bodyInput = document.getElementById("body");
 const categorySelect = document.getElementById("category");
 const statusSelect = document.getElementById("status");
 const btnSubmit = document.getElementById("btn-save");
-const btnDraft = document.getElementById("btn-save-draft");
 const eyebrow = document.getElementById("editor-eyebrow");
 const heading = document.getElementById("editor-title");
-const entryIdLabel = document.getElementById("entry-id-label");
+const permalinkLabel = document.getElementById("permalink-label");
 
 const editId = Number(new URLSearchParams(location.search).get("id")) || null;
 let pendingCategoryId = null;
@@ -36,11 +35,11 @@ async function loadCategories() {
       .map((c) => `<option value="${c.id}">${escapeHtml(c.name)}</option>`)
       .join("");
     if (!cats.length) {
-      categorySelect.innerHTML = '<option value="">No sections — run npm run db:seed</option>';
+      categorySelect.innerHTML = '<option value="">No categories — run npm run db:seed</option>';
     }
     if (pendingCategoryId) categorySelect.value = String(pendingCategoryId);
   } catch (err) {
-    categorySelect.innerHTML = '<option value="">Could not load sections</option>';
+    categorySelect.innerHTML = '<option value="">Could not load categories</option>';
     showError([err.message]);
   }
 }
@@ -52,9 +51,9 @@ function fillForm(post) {
   statusSelect.value = post.status;
   pendingCategoryId = post.categoryId;
   if (categorySelect.options.length) categorySelect.value = String(post.categoryId);
-  entryIdLabel.textContent = `№ ${String(post.id).padStart(3, "0")} · /${post.slug}`;
-  eyebrow.textContent = post.status === "published" ? "Editing published entry" : "Editing draft";
-  heading.textContent = "Revise the entry";
+  permalinkLabel.textContent = "/" + post.slug;
+  eyebrow.textContent = post.status === "published" ? "Editing published post" : "Editing draft";
+  heading.textContent = "Edit post";
 }
 
 async function loadPost() {
@@ -64,11 +63,11 @@ async function loadPost() {
     fillForm(post);
   } catch (err) {
     showError([err.message]);
-    heading.textContent = "Entry unavailable";
+    heading.textContent = "Post unavailable";
   }
 }
 
-async function save(status) {
+async function save() {
   if (saving) return;
   showError([]);
 
@@ -77,31 +76,30 @@ async function save(status) {
     excerpt: excerptInput.value,
     body: bodyInput.value,
     categoryId: Number(categorySelect.value),
-    status,
+    status: statusSelect.value || "draft",
   };
 
   const errors = [];
   if (!payload.title.trim() || payload.title.trim().length < 3) errors.push("Title must be at least 3 characters");
   if (payload.body.trim().length < 20) errors.push("Body must be at least 20 characters");
-  if (!payload.categoryId) errors.push("Choose a section");
+  if (!payload.categoryId) errors.push("Choose a category");
   if (errors.length) return showError(errors);
 
   saving = true;
   btnSubmit.disabled = true;
-  btnDraft.disabled = true;
   const prevLabel = btnSubmit.textContent;
   btnSubmit.textContent = "Saving…";
 
   try {
     if (editId) {
       const post = await api(`/api/posts/${editId}`, { method: "PUT", body: payload });
-      toast(status === "published" ? "Published" : "Draft saved");
+      toast(post.status === "published" ? "Post published" : "Draft saved");
       statusSelect.value = post.status;
-      entryIdLabel.textContent = `№ ${String(post.id).padStart(3, "0")} · /${post.slug}`;
-      eyebrow.textContent = post.status === "published" ? "Editing published entry" : "Editing draft";
+      permalinkLabel.textContent = "/" + post.slug;
+      eyebrow.textContent = post.status === "published" ? "Editing published post" : "Editing draft";
     } else {
       const post = await api("/api/posts", { method: "POST", body: payload });
-      toast(status === "published" ? "Published" : "Draft saved");
+      toast(post.status === "published" ? "Post published" : "Draft saved");
       history.replaceState(null, "", `/editor.html?id=${post.id}`);
       setTimeout(() => location.reload(), 350);
       return;
@@ -112,16 +110,13 @@ async function save(status) {
   } finally {
     saving = false;
     btnSubmit.disabled = false;
-    btnDraft.disabled = false;
     btnSubmit.textContent = prevLabel;
   }
 }
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  save(statusSelect.value || "draft");
+  save();
 });
-
-btnDraft.addEventListener("click", () => save("draft"));
 
 loadCategories().then(loadPost);

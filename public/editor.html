@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fbfaf7'/%3E%3Crect x='10' y='10' width='12' height='12' fill='%232b3fe8' transform='rotate(45 16 16)'/%3E%3C/svg%3E" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Editor — Quire</title>
-  <meta name="description" content="Write or edit an entry in the Quire archive." />
+  <title>New post — Quire</title>
+  <meta name="description" content="Write a new post for Quire." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body data-page="admin">
@@ -16,12 +17,11 @@
       <a class="brand" href="/">
         <span class="brand-mark" aria-hidden="true"></span>
         Quire
-        <span class="brand-sub">Desk</span>
       </a>
       <nav class="nav" aria-label="Primary">
-        <a href="/" data-nav="home">Index</a>
+        <a href="/" data-nav="home">Home</a>
         <a href="/about.html" data-nav="about">About</a>
-        <a href="/admin.html" class="nav-cta" data-nav="admin">Write</a>
+        <a href="/admin.html" class="nav-cta" data-nav="admin">New post</a>
       </nav>
     </div>
   </header>
@@ -29,10 +29,10 @@
   <main class="wrap">
     <div class="editor-head">
       <div>
-        <p class="eyebrow" id="editor-eyebrow">New entry</p>
-        <h1 id="editor-title">Write something worth filing</h1>
+        <p class="eyebrow" id="editor-eyebrow">New post</p>
+        <h1 id="editor-title">Create a new post</h1>
       </div>
-      <a class="back-link" href="/admin.html">← Back to desk</a>
+      <a class="back-link" href="/admin.html">← Back to posts</a>
     </div>
 
     <div class="editor-layout">
@@ -41,47 +41,47 @@
 
         <div class="field">
           <label for="title">Title</label>
-          <input type="text" id="title" name="title" required maxlength="160" placeholder="A sentence someone would click" autocomplete="off" />
+          <input type="text" id="title" name="title" required maxlength="160" placeholder="Post title" autocomplete="off" />
         </div>
 
         <div class="field">
           <label for="excerpt">Excerpt</label>
-          <textarea id="excerpt" name="excerpt" rows="3" maxlength="300" placeholder="One or two lines shown in the index. Leave blank to auto-generate."></textarea>
-          <p class="hint">Shown under the title on the index and as the article dek.</p>
+          <textarea id="excerpt" name="excerpt" rows="3" maxlength="300" placeholder="A short summary shown on the home page. Leave blank to generate one."></textarea>
+          <p class="hint">One or two sentences. Shown under the title in the post list.</p>
         </div>
 
         <div class="field">
           <label for="body">Body</label>
-          <textarea id="body" name="body" class="body-input" required placeholder="Start writing. Use ## for section headings and - for list items."></textarea>
-          <p class="hint">Plain text with light markdown: <code>## heading</code>, <code>**bold**</code>, <code>- list</code>.</p>
+          <textarea id="body" name="body" class="body-input" required placeholder="Start writing…"></textarea>
+          <p class="hint">Supports light formatting: <code>## heading</code>, <code>**bold**</code>, <code>- list</code>.</p>
         </div>
 
         <div class="form-actions">
-          <button type="submit" class="btn" id="btn-save">Save entry</button>
-          <button type="button" class="btn btn-ghost" id="btn-save-draft">Save as draft</button>
+          <button type="submit" class="btn" id="btn-save">Save</button>
           <a class="btn btn-ghost" href="/admin.html">Cancel</a>
         </div>
       </form>
 
       <aside>
         <div class="form-card">
-          <h2>Filing</h2>
+          <h2>Post settings</h2>
           <div class="field">
-            <label for="category">Section</label>
+            <label for="category">Category</label>
             <select id="category" name="category" required>
-              <option value="">Loading sections…</option>
+              <option value="">Loading…</option>
             </select>
           </div>
           <div class="field">
             <label for="status">Status</label>
             <select id="status" name="status">
-              <option value="draft">Draft — desk only</option>
-              <option value="published">Published — on the index</option>
+              <option value="draft">Draft</option>
+              <option value="published">Published</option>
             </select>
+            <p class="hint">Drafts stay hidden from the home page.</p>
           </div>
           <div class="field">
-            <label>Entry ID</label>
-            <p class="hint" id="entry-id-label" style="margin:0">Assigned on first save</p>
+            <label>Permalink</label>
+            <p class="hint" id="permalink-label" style="margin:0">Set after first save</p>
           </div>
         </div>
       </aside>
@@ -90,8 +90,8 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <span>Quire · Full Stack Project 3 · PostgreSQL</span>
-      <span><a href="/">Back to index</a></span>
+      <span>© 2026 Quire</span>
+      <span><a href="/">Back to home</a></span>
     </div>
   </footer>
 

@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fbfaf7'/%3E%3Crect x='10' y='10' width='12' height='12' fill='%232b3fe8' transform='rotate(45 16 16)'/%3E%3C/svg%3E" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About — Quire</title>
-  <meta name="description" content="What Quire is, how it is built, and who it is for." />
+  <meta name="description" content="About Quire — an independent publication on software, systems, and craft." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body data-page="about">
@@ -16,12 +17,11 @@
       <a class="brand" href="/">
         <span class="brand-mark" aria-hidden="true"></span>
         Quire
-        <span class="brand-sub">Archive</span>
       </a>
       <nav class="nav" aria-label="Primary">
-        <a href="/" data-nav="home">Index</a>
+        <a href="/" data-nav="home">Home</a>
         <a href="/about.html" data-nav="about">About</a>
-        <a href="/admin.html" class="nav-cta" data-nav="admin">Write</a>
+        <a href="/admin.html" class="nav-cta" data-nav="admin">New post</a>
       </nav>
     </div>
   </header>
@@ -29,47 +29,45 @@
   <main>
     <div class="wrap">
       <header class="page-intro">
-        <p class="eyebrow">Colophon</p>
-        <h1>A small archive with a permanent address.</h1>
-        <p>Quire is a writing site built as DecodeLabs Full Stack Project&nbsp;3 — database integration done properly, without the ceremony.</p>
+        <p class="eyebrow">About</p>
+        <h1>Writing for people who build things.</h1>
+        <p>Quire is an independent publication about software, systems, and the craft behind them — written by practitioners, for practitioners.</p>
       </header>
 
       <section class="about-grid" aria-label="At a glance">
         <div class="about-cell">
-          <span class="eyebrow">Storage</span>
-          <h2>PostgreSQL, not a notepad</h2>
-          <p>Every entry lives in a real relational database — categories, drafts, timestamps, and all. Nothing is held in a temporary variable.</p>
+          <span class="eyebrow">Topics</span>
+          <h2>Engineering, end to end</h2>
+          <p>Architecture, data, interfaces, and the daily decisions that separate good software from the rest.</p>
         </div>
         <div class="about-cell">
-          <span class="eyebrow">Operations</span>
-          <h2>Full CRUD</h2>
-          <p>Create, read, update, and delete posts through a JSON API with validation, parameterised queries, and sensible errors.</p>
+          <span class="eyebrow">Cadence</span>
+          <h2>A few posts a month</h2>
+          <p>We publish when a piece is genuinely ready. No filler, no reposts, no chasing the algorithm.</p>
         </div>
         <div class="about-cell">
-          <span class="eyebrow">Interface</span>
-          <h2>Five plain pages</h2>
-          <p>Index, entry, about, desk, and editor. Server-rendered feel, no framework, no build step — just HTML, CSS, and fetch.</p>
+          <span class="eyebrow">Contact</span>
+          <h2>Say hello</h2>
+          <p>Feedback, corrections, or a topic you'd like us to cover — reach the editors at hello@quire.blog.</p>
         </div>
       </section>
 
       <div class="about-body prose">
-        <h2>Why it looks like this</h2>
-        <p>Most blogs are a grid of identical cards. Quire is built as an <strong>accession index</strong>: entries are numbered, filed under a section, and dated — the way a working archive keeps track of what it holds. The blue rule that appears on hover is the only flourish; everything else is typography and spacing.</p>
-        <p>Articles are set in Newsreader for long-form reading, Archivo for structure, and IBM Plex Mono for the machine-readable parts — dates, entry numbers, status badges.</p>
+        <h2>Why we write</h2>
+        <p>The best engineering knowledge lives in short, honest essays — the kind you can read over a coffee and apply the same afternoon. Quire exists to publish those: practical, specific, and free of hype.</p>
+        <p>Every post here comes from real work. If we haven't shipped it, debugged it, or regretted it, we don't write about it.</p>
 
-        <h2>The schema</h2>
-        <p>Two tables. <strong>categories</strong> and <strong>posts</strong>, related one-to-many with a foreign key. Posts carry a status (<code>draft</code> or <code>published</code>), a computed reading time, and both <code>created_at</code> and <code>published_at</code> so the index can sort by what readers actually see.</p>
-
-        <h2>Running it locally</h2>
-        <p>Copy <code>.env.example</code> to <code>.env</code>, point <code>DATABASE_URL</code> at your Postgres instance, then run the schema and seed scripts before starting the server. The full sequence is in the README.</p>
+        <h2>How we work</h2>
+        <p>Each draft is reviewed by at least one other engineer before it goes out. We correct mistakes openly and update posts when the landscape shifts.</p>
+        <p>Have a story worth telling? We're always open to guest pieces from people doing the work.</p>
       </div>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="wrap">
-      <span>Quire · Full Stack Project 3 · PostgreSQL</span>
-      <span><a href="/">Back to index</a> · <a href="/admin.html">Editorial desk</a></span>
+      <span>© 2026 Quire</span>
+      <span><a href="/">Back to home</a> · <a href="/admin.html">Dashboard</a></span>
     </div>
   </footer>
 

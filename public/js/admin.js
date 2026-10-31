@@ -28,14 +28,14 @@ function renderPosts(posts) {
     .map(
       (p) => `
     <tr data-id="${p.id}">
-      <td class="mono" style="color:var(--quiet)">${String(p.id).padStart(3, "0")}</td>
+      <td class="admin-id">${String(p.id).padStart(3, "0")}</td>
       <td>
         <a class="admin-title" href="/post.html?slug=${encodeURIComponent(p.slug)}">${escapeHtml(p.title)}</a>
         <div class="admin-slug">/${escapeHtml(p.slug)}</div>
       </td>
       <td><span class="badge">${escapeHtml(p.category)}</span></td>
-      <td><span class="badge badge-${p.status}">${p.status}</span></td>
-      <td class="mono" style="color:var(--quiet); font-size:0.6875rem">${formatDate(p.updatedAt)}</td>
+      <td><span class="badge badge-${p.status}">${p.status === "published" ? "Published" : "Draft"}</span></td>
+      <td style="color:var(--quiet); font-size:0.875rem">${formatDate(p.updatedAt)}</td>
       <td>
         <div class="row-actions">
           <a class="icon-btn" href="/editor.html?id=${p.id}">Edit</a>
@@ -61,7 +61,7 @@ async function deletePost(id, title) {
   if (!confirm(`Delete “${title}”? This cannot be undone.`)) return;
   try {
     await api(`/api/posts/${id}`, { method: "DELETE" });
-    toast("Entry deleted");
+    toast("Post deleted");
     await Promise.all([loadPosts(), loadStats()]);
   } catch (err) {
     toast(err.message || "Delete failed", true);

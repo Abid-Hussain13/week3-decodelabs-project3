@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23fbfaf7'/%3E%3Crect x='10' y='10' width='12' height='12' fill='%232b3fe8' transform='rotate(45 16 16)'/%3E%3C/svg%3E" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Desk — Quire</title>
-  <meta name="description" content="Editorial desk — manage posts in the Quire archive." />
+  <title>Dashboard — Quire</title>
+  <meta name="description" content="Manage posts on Quire." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/styles.css" />
 </head>
 <body data-page="admin">
@@ -16,12 +17,11 @@
       <a class="brand" href="/">
         <span class="brand-mark" aria-hidden="true"></span>
         Quire
-        <span class="brand-sub">Desk</span>
       </a>
       <nav class="nav" aria-label="Primary">
-        <a href="/" data-nav="home">Index</a>
+        <a href="/" data-nav="home">Home</a>
         <a href="/about.html" data-nav="about">About</a>
-        <a href="/admin.html" class="nav-cta" data-nav="admin">Write</a>
+        <a href="/admin.html" class="nav-cta" data-nav="admin">New post</a>
       </nav>
     </div>
   </header>
@@ -29,8 +29,8 @@
   <main class="wrap">
     <div class="admin-bar">
       <div>
-        <p class="eyebrow">Editorial desk</p>
-        <h1>All entries</h1>
+        <p class="eyebrow">Dashboard</p>
+        <h1>All posts</h1>
       </div>
       <div style="display:flex; gap:1rem; align-items:center; flex-wrap:wrap">
         <div class="stats" id="stats" aria-label="Post counts">
@@ -38,7 +38,7 @@
           <div class="stat"><div class="stat-val" id="stat-pub">—</div><div class="stat-lab">Published</div></div>
           <div class="stat"><div class="stat-val" id="stat-draft">—</div><div class="stat-lab">Drafts</div></div>
         </div>
-        <a class="btn" href="/editor.html">New entry</a>
+        <a class="btn" href="/editor.html">New post</a>
       </div>
     </div>
 
@@ -46,28 +46,28 @@
       <table class="admin-table" id="posts-table">
         <thead>
           <tr>
-            <th style="width:4.5rem">ID</th>
+            <th style="width:3.5rem">ID</th>
             <th>Title</th>
-            <th style="width:7rem">Section</th>
+            <th style="width:7rem">Category</th>
             <th style="width:7rem">Status</th>
             <th style="width:7rem">Updated</th>
             <th style="width:11rem; text-align:right">Actions</th>
           </tr>
         </thead>
         <tbody id="posts-body">
-          <tr><td colspan="6"><p class="loading">Loading entries…</p></td></tr>
+          <tr><td colspan="6"><p class="loading">Loading posts…</p></td></tr>
         </tbody>
       </table>
     </div>
     <div id="empty-state" hidden class="empty" style="margin-top:1rem">
-      No entries yet. Create the first one.
+      No posts yet. Create the first one.
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="wrap">
-      <span>Quire · Full Stack Project 3 · PostgreSQL</span>
-      <span><a href="/">Back to index</a></span>
+      <span>© 2026 Quire</span>
+      <span><a href="/">Back to home</a></span>
     </div>
   </footer>
 

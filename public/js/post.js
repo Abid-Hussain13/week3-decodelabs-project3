@@ -61,11 +61,10 @@ async function loadPost() {
   if (!slug) {
     root.innerHTML = `
       <div class="page-intro">
-        <p class="eyebrow">No entry selected</p>
-        <h1>That page is blank.</h1>
-        <p>Pick an entry from the index to read it.</p>
+        <h1>Nothing to show here.</h1>
+        <p>Pick a post from the home page to read it.</p>
       </div>
-      <p style="padding: 2rem 0"><a class="back-link" href="/">← Back to index</a></p>`;
+      <p style="padding: 2rem 0"><a class="back-link" href="/">← Back to home</a></p>`;
     return;
   }
 
@@ -74,14 +73,14 @@ async function loadPost() {
     if (post.status !== "published") {
       root.innerHTML = `
         <div class="page-intro">
-          <p class="eyebrow">Draft · not published</p>
+          <p class="eyebrow">Draft — not published</p>
           <h1>${escapeHtml(post.title)}</h1>
-          <p>This entry is still a draft. Publish it from the desk to make it public.</p>
+          <p>This post is still a draft. Publish it to make it public.</p>
         </div>
         <p style="padding: 2rem 0">
-          <a class="back-link" href="/editor.html?id=${post.id}">Edit draft →</a>
+          <a class="back-link" href="/editor.html?id=${post.id}">Edit post →</a>
           &nbsp;·&nbsp;
-          <a class="back-link" href="/">← Back to index</a>
+          <a class="back-link" href="/">← Back to home</a>
         </p>`;
       return;
     }
@@ -95,7 +94,6 @@ async function loadPost() {
             <span class="tag">${escapeHtml(post.category)}</span>
             <span>${formatDate(post.publishedAt)}</span>
             <span>${post.readingMinutes} min read</span>
-            <span>Entry ${String(post.id).padStart(3, "0")}</span>
           </div>
           <h1>${escapeHtml(post.title)}</h1>
           <p class="article-dek">${escapeHtml(post.excerpt)}</p>
@@ -103,18 +101,17 @@ async function loadPost() {
         </header>
         <div class="prose">${renderMarkdown(post.body)}</div>
         <footer class="article-foot">
-          <span>Filed under ${escapeHtml(post.category)}</span>
-          <a class="back-link" href="/">← Back to index</a>
+          <span>${escapeHtml(post.category)}</span>
+          <a class="back-link" href="/">← Back to home</a>
         </footer>
       </article>`;
   } catch (err) {
     root.innerHTML = `
       <div class="page-intro">
-        <p class="eyebrow">Error</p>
-        <h1>Entry not found.</h1>
-        <p>${escapeHtml(err.message)}. It may have been removed, or the slug is wrong.</p>
+        <h1>Post not found.</h1>
+        <p>${escapeHtml(err.message)}. It may have been removed, or the link is wrong.</p>
       </div>
-      <p style="padding: 2rem 0"><a class="back-link" href="/">← Back to index</a></p>`;
+      <p style="padding: 2rem 0"><a class="back-link" href="/">← Back to home</a></p>`;
   }
 }
 
